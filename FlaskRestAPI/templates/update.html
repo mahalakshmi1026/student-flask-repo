@@ -1,0 +1,68 @@
+{% extends 'master.html' %}
+{% block title %}Update Student{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Update Student</h2>
+    <form method="post" action="">
+        <table class="table">
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="first_name" class="form-control" value="{{ student.first_name }}" required></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" name="last_name" class="form-control" value="{{ student.last_name }}" required></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email" class="form-control" value="{{ student.email }}" required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" class="form-control" value="{{ student.password }}" required></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <label>
+                        <input type="radio" name="gender" value="male" {% if student.gender == 'male' %}checked{% endif %}> Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" {% if student.gender == 'female' %}checked{% endif %}> Female
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Hobbies</td>
+                <td>
+                    <label>
+                        <input type="checkbox" name="hobbies" value="Cricket" {% if 'Cricket' in student.hobbies %}checked{% endif %}> Cricket
+                    </label>
+                    <label>
+                        <input type="checkbox" name="hobbies" value="Movies" {% if 'Movies' in student.hobbies %}checked{% endif %}> Movies
+                    </label>
+                    <label>
+                        <input type="checkbox" name="hobbies" value="TV" {% if 'TV' in student.hobbies %}checked{% endif %}> TV
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>
+                    <select name="country" class="form-control">
+                        <option value="india" {% if student.country == 'india' %}selected{% endif %}>India</option>
+                        <option value="usa" {% if student.country == 'usa' %}selected{% endif %}>USA</option>
+                        <option value="australia" {% if student.country == 'australia' %}selected{% endif %}>Australia</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}
